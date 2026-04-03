@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre o Viveiro — Viveiro Yuri Bini </title>
+  <meta name="description" content="Conheça o Viveiro Cítrico Shulemburg. Mais de 10 anos produzindo mudas de qualidade em Pouso Redondo, SC." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg" sizes="32x32">
+  <style>
+    /* ===== VIVEIRO PAGE ===== */
+
+    /* Hero da página */
+    .viveiro-hero {
+      position: relative;
+      height: 360px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .viveiro-hero-img {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, #1e4d08 0%, #3b6d11 40%, #5a8f20 70%, #7ab82e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Decoração de folhas SVG no hero */
+    .viveiro-hero-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%);
+    }
+    .viveiro-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    }
+    .viveiro-hero-text {
+      position: relative;
+      z-index: 2;
+      padding: 32px;
+      width: 100%;
+    }
+    .viveiro-hero-text h1 {
+      font-size: 30px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .viveiro-hero-text p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+    }
+    .viveiro-hero-emoji {
+      font-size: 80px;
+      opacity: 0.18;
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      user-select: none;
+    }
+
+    /* Layout da página */
+    .viveiro-body {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 32px;
+    }
+
+    /* Intro com foto */
+    .viveiro-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    .viveiro-intro-text h2 {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .viveiro-intro-text p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .viveiro-intro-img {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--green-light);
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      border: 0.5px solid var(--border);
+      position: relative;
+    }
+    .photo-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #d4edbe 0%, #c0dd97 100%);
+      position: relative;
+    }
+    .photo-placeholder-emoji {
+      font-size: 52px;
+      opacity: 0.6;
+    }
+    .photo-placeholder-label {
+      font-size: 11px;
+      color: var(--green-mid);
+      font-weight: 500;
+      opacity: 0.8;
+      text-align: center;
+      padding: 0 16px;
+    }
+    .photo-placeholder-tag {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 6px;
+      font-size: 10px;
+      color: var(--green-mid);
+      padding: 3px 8px;
+      font-weight: 500;
+    }
+
+    /* Galeria de fotos */
+    .viveiro-galeria {
+      margin-bottom: 56px;
+      margin: 10px;
+    }
+    .viveiro-galeria h2 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .viveiro-galeria-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 200px 180px;
+      gap: 10px;
+    }
+    .galeria-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+    }
+    .galeria-item:first-child {
+      grid-row: 1 / 3;
+    }
+    .galeria-foto {
+      width: 100%;
+  height: 100%;
+  object-fit: cover;        /* recorta a imagem para preencher o espaço */
+  object-position: center;  /* ← AQUI você controla o enquadramento */
+    }
+    .galeria-foto .foto-label {
+      font-size: 10px;
+      color: var(--green-mid);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.7;
+    }
+    .gf-1 { background: linear-gradient(135deg, #c8e6a0 0%, #a8d060 100%); }
+    .gf-2 { background: linear-gradient(135deg, #d4edbe 0%, #b8d98a 100%); }
+    .gf-3 { background: linear-gradient(135deg, #f5e8d0 0%, #e8d0a0 100%); }
+    .gf-4 { background: linear-gradient(135deg, #f0dde8 0%, #e0b8cc 100%); }
+    .gf-5 { background: linear-gradient(135deg, #d0e8d4 0%, #a8d0b0 100%); }
+
+    /* Pilares / diferenciais */
+    .viveiro-diferenciais {
+      margin-bottom: 56px;
+      margin: 10px;
+    }
+    .viveiro-diferenciais h2 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .viveiro-diferenciais-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .diferencial-card {
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 18px;
+      background: var(--white);
+    }
+    .diferencial-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+    .diferencial-titulo {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .diferencial-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Equipe / Responsável */
+    .viveiro-equipe {
+      background: var(--green-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 56px;
+      border: 0.5px solid rgba(99,153,34,0.2);
+    }
+    .equipe-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--green-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 500;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .equipe-nome {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+    .equipe-cargo {
+      font-size: 12px;
+      color: var(--green-mid);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .equipe-bio {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Estrutura / Estufa */
+    .viveiro-estrutura {
+      margin-bottom: 40px;
+      margin: 10px;
+    }
+    .viveiro-estrutura h2 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .estrutura-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .estrutura-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .estrutura-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+    }
+    .estrutura-item-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .estrutura-item-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    .estrutura-item-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* CTA */
+    .viveiro-cta {
+      background: var(--green-dark);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .viveiro-cta h2 {
+      font-size: 22px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .viveiro-cta p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+    }
+    .viveiro-cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-viveiro-outline {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-viveiro-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 768px) {
+      .viveiro-intro { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .galeria-item:first-child { grid-row: auto; }
+      .diferenciais-grid { grid-template-columns: 1fr; }
+      .viveiro-equipe { grid-template-columns: 1fr; text-align: center; }
+      .equipe-avatar { margin: 0 auto; }
+      .estrutura-items { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+ <!-- NAVBAR -->
+  <nav class="nav">
+    <a href="index.html" class="logo" style="text-decoration:none;">
+      <div class="logo-icon" style="background:transparent;">
+        <img src="favicon.svg" alt="favicon" style="width:36px; height:36px; object-fit:contain;">
+      </div>
+      <div>
+        <div class="logo-name">Viveiro <span>Cítrico Yuri Bini</span></div>
+        <div class="logo-sub">Pouso Redondo, SC</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="viveiro.html">Sobre o Viveiro</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+    <button class="wpp-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      WhatsApp
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Início</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="viveiro.html" class="active">Sobre o Viveiro</a>
+    <a href="index.html#contato">Contato</a>
+    <a href="#" class="mobile-wpp wpp-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div class="viveiro-hero">
+    <div class="viveiro-hero-img">
+        <img src="img/FOTO3.jpg" alt=fotodoviveiro width="100%">
+    </div>
+    <div class="viveiro-hero-overlay"></div>
+    <div class="viveiro-hero-text">
+      <h1>Sobre o Viveiro</h1>
+      <p>Mais de 10 anos cultivando mudas com qualidade e cuidado em Pouso Redondo, SC</p>
+    </div>
+  </div>
+
+  <!-- CORPO -->
+  <div class="viveiro-body">
+
+    <!-- INTRO -->
+    <div class="viveiro-intro">
+      <div class="viveiro-intro-text">
+        <h2>Uma história enraizada no campo</h2>
+        <p>O Viveiro Cítrico Yuri Bini nasceu da paixão pelo cultivo e do desejo de oferecer mudas de verdadeira qualidade para produtores e jardins da região do Alto Vale do Itajaí.</p>
+        <p>Com mais de 10 anos de experiência, o viveiro se consolidou como referência em mudas cítricas, ornamentais e frutíferas em Santa Catarina. Todas as mudas são produzidas com rigoroso controle fitossanitário, garantindo saúde e procedência ao cliente.</p>
+        <p>A produção em estufa, com porta-enxertos certificados e técnicas modernas de enxertia, resulta em mudas mais resistentes, uniformes e prontas para produzir mais rápido.</p>
+      </div>
+      <div class="viveiro-intro-img">
+        <img src="img/foto2.jpeg" alt="fotodaestufa" class="galeria-foto">
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERIA -->
+    <div class="viveiro-galeria">
+      <h2>Galeria do viveiro</h2>
+      <div class="viveiro-galeria-sub">Espaço, produção e estrutura</div>
+      <div class="galeria-grid">
+
+        <div class="galeria-item">
+          <div class="galeria-foto gf-1">
+            <img src="img/foto1.jpg" alt="fotodasbancadas" class="galeria-foto">
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <div class="galeria-foto gf-2">
+            <img src="img/foto4.jpg" alt="fotomudas" class="galeria-foto">
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <div class="galeria-foto gf-3">
+            <img src="img/foto5.jpg" alt="fotofrutos" class="galeria-foto">
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <div class="galeria-foto gf-4">
+            <img src="img/foto6.jpg" alt="mudasnarua" class="galeria-foto">
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="img/foto7.jpg" alt="mudaspomar" class="galeria-foto">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESPONSÁVEL -->
+    <div class="viveiro-equipe">
+      <div class="equipe-avatar">YB</div>
+      <div>
+        <div class="equipe-nome">Yuri Bini</div>
+        <div class="equipe-cargo">Responsável técnico &bull; Fundador</div>
+        <div class="equipe-bio">
+          Produtor rural com mais de 10 anos dedicados à citricultura e ao cultivo de frutíferas. Yuri é reconhecido na região pelo conhecimento técnico, cuidado com as mudas e atendimento personalizado a cada cliente — seja um pequeno produtor familiar ou uma grande propriedade rural.
+        </div>
+      </div>
+    </div>
+
+    <!-- DIFERENCIAIS -->
+    <div class="viveiro-diferenciais">
+      <h2>Por que escolher o Viveiro Cítrico Yuri Bini?</h2>
+      <div class="viveiro-diferenciais-sub">O que nos diferencia no mercado de mudas</div>
+      <div class="diferenciais-grid">
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">🔬</div>
+          <div class="diferencial-titulo">Controle fitossanitário rigoroso</div>
+          <div class="diferencial-desc">Todas as mudas passam por inspeção e controle de pragas e doenças antes da venda, garantindo saúde total.</div>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">🌿</div>
+          <div class="diferencial-titulo">Porta-enxertos certificados</div>
+          <div class="diferencial-desc">Trabalhamos com porta-enxertos de origem certificada, com rastreabilidade e comprovação de qualidade genética.</div>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">🏗️</div>
+          <div class="diferencial-titulo">Produção em estufa</div>
+          <div class="diferencial-desc">A estufa protege as mudas das intempéries e garante crescimento uniforme, acelerando o desenvolvimento inicial.</div>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">📍</div>
+          <div class="diferencial-titulo">Viveiro credenciado</div>
+          <div class="diferencial-desc">Credenciamento junto aos órgãos competentes, assegurando conformidade com as exigências sanitárias do Estado de SC.</div>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">🤝</div>
+          <div class="diferencial-titulo">Atendimento personalizado</div>
+          <div class="diferencial-desc">Orientação técnica na escolha da variedade certa para cada solo, clima e objetivo do produtor ou jardim.</div>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">🚚</div>
+          <div class="diferencial-titulo">Amplo Atendimento</div>
+          <div class="diferencial-desc">Atendemos toda a região sul, com entrega mediante a negociação.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ESTRUTURA -->
+    <div class="viveiro-estrutura">
+      <h2>Nossa estrutura</h2>
+      <div class="estrutura-sub">Infraestrutura pensada para garantir mudas de alta qualidade</div>
+      <div class="estrutura-items">
+
+        <div class="estrutura-item">
+          <div class="estrutura-item-icon">🏠</div>
+          <div>
+            <div class="estrutura-item-title">Estufa climatizada</div>
+            <div class="estrutura-item-desc">Ambiente controlado para produção de mudas durante todo o ano, com proteção contra chuva, vento e geada.</div>
+          </div>
+        </div>
+
+        <div class="estrutura-item">
+          <div class="estrutura-item-icon">💧</div>
+          <div>
+            <div class="estrutura-item-title">Sistema de irrigação</div>
+            <div class="estrutura-item-desc">Fertirrigação que garante uniformidade hídrica e reduz o desperdício de água.</div>
+          </div>
+        </div>
+
+        <div class="estrutura-item">
+          <div class="estrutura-item-icon">🌱</div>
+          <div>
+            <div class="estrutura-item-title">Área de propagação</div>
+            <div class="estrutura-item-desc">Setor exclusivo para enxertia, estaquia e multiplicação de material genético selecionado.</div>
+          </div>
+        </div>
+
+        <div class="estrutura-item">
+          <div class="estrutura-item-icon">📦</div>
+          <div>
+            <div class="estrutura-item-title">Área de expedição</div>
+            <div class="estrutura-item-desc">Separação e preparação das mudas para transporte, com proteção das raízes e caule das mudas.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="viveiro-cta">
+      <h2>Venha nos visitar ou fale pelo WhatsApp</h2>
+      <p>Endereço Yuri, Pouso Redondo — SC &bull; Segunda a Sexta: 7h às 18h &bull; Sábado: 8h às 12h</p>
+      <div class="viveiro-cta-buttons">
+        <button class="wpp-big" style="font-size:14px; padding: 12px 24px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Falar com Yuri
+        </button>
+        <a href="catalogo.html" class="btn-viveiro-outline">Ver catálogo de mudas →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-copy">&copy; 2026 Viveiro Cítrico &mdash; Yuri Bini | 
+      <a href="politicadeprivacidade.html">Política de Privacidade</a>
+    </div>
+    <div class="footer-loc">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      Desenvolvido Por  <a href="https://www.magnattodigital.com.br" target="_blank">Magnatto Digital</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

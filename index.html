@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viveiro Yuri Bini</title>
+  <meta name="description" content="Mudas cítricas, ornamentais e frutíferas de qualidade. Viveiro Cítrico, Pouso Redondo - SC. Fale conosco pelo WhatsApp." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg" sizes="32x32">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <a href="index.html" class="logo" style="text-decoration:none;">
+      <div class="logo-icon" style="background:transparent;">
+        <img src="favicon.svg" alt="favicon" style="width:36px; height:36px; object-fit:contain;">
+      </div>
+      <div>
+        <div class="logo-name">Viveiro <span>Cítrico Yuri Bini</span></div>
+        <div class="logo-sub">Pouso Redondo, SC</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="viveiro.html">Sobre o Viveiro</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+    <button class="wpp-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      WhatsApp
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Início</a>
+    <a href="catalogo.html">Catálogo</a>
+    <a href="viveiro.html">Sobre o Viveiro</a>
+    <a href="index.html#contato">Contato</a>
+    <a href="#" class="mobile-wpp wpp-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Viveiro credenciado &bull; Pouso Redondo, SC</div>
+      <h1>Mudas de Qualidade<br>para <span>Quem Entende</span></h1>
+      <p>Cítricas, ornamentais e frutíferas com procedência garantida.</p>
+      <div class="hero-actions">
+        <a href="catalogo.html"><button class="btn-primary">Ver catálogo completo</button></a>
+        <a href="viveiro.html"><button class="btn-outline">Conhecer o viveiro</button></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">+10</div>
+      <div class="stat-label">anos de experiência</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">variedades disponíveis</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SC</div>
+      <div class="stat-label">Pouso Redondo e região</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2k</div>
+      <div class="stat-label">clientes atendidos</div>
+    </div>
+  </div>
+
+  <!-- CATEGORIAS -->
+  <section class="section" id="catalogo">
+    <div class="section-title">Nossas categorias</div>
+    <div class="section-sub">Encontre a muda certa para o seu projeto</div>
+    <div class="cat-grid">
+      <a href="catalogo.html?cat=citrico" class="cat-card">
+        <div class="cat-icon citrico">🍊</div>
+        <div class="cat-name">Mudas cítricas</div>
+        <div class="cat-desc">Laranja, limão, tangerina, pomelo e mais. Porta-enxertos certificados.</div>
+        <span class="cat-tag tag-green">+25 variedades</span>
+      </a>
+      <a href="catalogo.html?cat=ornamental" class="cat-card">
+        <div class="cat-icon ornamental">🌸</div>
+        <div class="cat-name">Ornamentais</div>
+        <div class="cat-desc">Plantas para jardins, paisagismo e decoração com variedades exclusivas.</div>
+        <span class="cat-tag tag-pink">+20 espécies</span>
+      </a>
+      <a href="catalogo.html?cat=frutifera" class="cat-card">
+        <div class="cat-icon frutifera">🍑</div>
+        <div class="cat-name">Frutíferas</div>
+        <div class="cat-desc">Abacate, goiaba, jabuticaba, maracujá e diversas frutíferas tropicais.</div>
+        <span class="cat-tag tag-amber">+20 tipos</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PRODUTOS EM DESTAQUE -->
+  <section class="section" style="padding-top: 0;">
+    <div class="section-title">Destaques do catálogo</div>
+    <div class="section-sub">Mudas disponíveis agora</div>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="img/laranjapera.webp" alt="laranjapera">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Laranja pera</div>
+          <div class="prod-detail">Muda enxertada &bull; Sacola 3L</div>
+          <button class="prod-cta">Consultar preço →</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="img/limaotahiti.jpg" alt="limaotahiti">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Limão taiti</div>
+          <div class="prod-detail">Muda enxertada &bull; Sacola 3L</div>
+          <button class="prod-cta">Consultar preço →</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="img/mangapalmer.jpeg" alt="mangapalmer">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Manga palmer</div>
+          <div class="prod-detail">Muda enxertada &bull; Vaso 5L</div>
+          <button class="prod-cta">Consultar preço →</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-img">
+          <img src="img/hibisco.webp" alt="hibisco">
+        </div>
+        <div class="prod-body">
+          <div class="prod-name">Hibisco</div>
+          <div class="prod-detail">Ornamental &bull; Vaso 2L</div>
+          <button class="prod-cta">Consultar preço →</button>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 28px;">
+      <a href="catalogo.html"><button class="btn-catalogo-link">Ver catálogo completo →</button></a>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <div class="testimonials" id="sobre">
+    <div class="test-inner">
+      <div class="section-title">O que nossos clientes dizem</div>
+      <div class="section-sub">Depoimentos de produtores e compradores</div>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">Comprei mudas de limão e laranja, todas pegaram muito bem. Qualidade excelente e atendimento ótimo. Recomendo para qualquer produtor da região.</div>
+          <div class="test-author">
+            <div class="test-avatar">JS</div>
+            <div>
+              <div class="test-info-name">João Schaefer</div>
+              <div class="test-info-loc">Produtor rural &bull; Taió, SC</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">Já compro mudas do Viveiro do Yuri há vários anos. As ornamentais são lindas e as frutíferas todas de primeira. Entrega pontual e bem embalada.</div>
+          <div class="test-author">
+            <div class="test-avatar">MF</div>
+            <div>
+              <div class="test-info-name">Maria Furtado</div>
+              <div class="test-info-loc">Paisagista &bull; Lontras, SC</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">Mudas sadias, bem formadas e com ótimo desenvolvimento. O Yuri é muito atencioso e tem expertise real no setor. Vale cada centavo.</div>
+          <div class="test-author">
+            <div class="test-avatar">RK</div>
+            <div>
+              <div class="test-info-name">Roberto Klug</div>
+              <div class="test-info-loc">Produtor &bull; Agronômica, SC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="cta-section" id="contato">
+    <h2>Pronto para fazer seu pedido?</h2>
+    <p>Fale diretamente com o Evandro e tire todas as suas dúvidas sobre variedades, preços e disponibilidade.</p>
+    <button class="wpp-big">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Falar pelo WhatsApp
+    </button>
+  </div>
+
+  <div class="contato__info">
+    <div class="info-card">
+      <span class="info-card__icon">📍</span>
+      <div>
+        <strong>Endereço</strong>
+        <p>Endereço do Yuri <br/>Pouso Redondo — SC, 89172-000</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="info-card__icon">🕒</span>
+      <div>
+        <strong>Horário de funcionamento</strong>
+        <p>Segunda a Sexta: 7h às 18h<br/>Sábados: 8h às 12h</p>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="info-card__icon">📱</span>
+      <div>
+        <strong>WhatsApp</strong>
+        <p>(47) 99672-6863 (Yuri)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contato__mapa">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15031.150575169318!2d-49.9323580200425!3d-27.254324479326076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sviveiro%20yuri%20bini!5e0!3m2!1spt-BR!2sbr!4v1775231626300!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Localização do Viveiro Cítrico Yuri Bini"
+    ></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-copy">&copy; 2026 Viveiro Cítrico &mdash; Yuri Bini | 
+      <a href="politicadeprivacidade.html">Política de Privacidade</a>
+    </div>
+    <div class="footer-loc">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      Desenvolvido Por  <a href="https://www.magnattodigital.com.br" target="_blank">Magnatto Digital</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

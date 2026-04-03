@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo — Viveiro Yuri Bini</title>
+  <meta name="description" content="Catálogo completo de mudas cítricas, ornamentais e frutíferas. Viveiro Cítrico Yuri Bini, Pouso Redondo - SC." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.svg" sizes="32x32">
+  <style>
+    /* ===== CATÁLOGO PAGE ===== */
+    .catalogo-hero {
+      background: var(--green-dark);
+      padding: 40px 32px 36px;
+      text-align: center;
+    }
+    .catalogo-hero h1 {
+      font-size: 28px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .catalogo-hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .catalogo-body {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 40px 32px;
+    }
+
+    /* Filtros */
+    .filtros {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .filtro-btn {
+      padding: 8px 20px;
+      border-radius: 24px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .filtro-btn:hover {
+      border-color: var(--green-main);
+      color: var(--green-mid);
+    }
+    .filtro-btn.ativo {
+      background: var(--green-main);
+      border-color: var(--green-main);
+      color: #fff;
+    }
+
+    /* Grid de produtos */
+    .cat-products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .cat-prod-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .cat-prod-card:hover {
+      border-color: var(--green-main);
+      box-shadow: 0 4px 16px rgba(99,153,34,0.1);
+    }
+    .cat-prod-img {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      position: relative;
+      
+    }
+
+    .cat-prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .cat-prod-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.03em;
+    }
+    .badge-citrico   { background: var(--green-light); color: var(--green-mid); }
+    .badge-ornamental{ background: var(--pink-light); color: var(--pink-main); }
+    .badge-frutifera { background: var(--amber-light); color: var(--amber-main); }
+
+    .cat-prod-body {
+      padding: 14px 16px;
+    }
+    .cat-prod-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+    .cat-prod-detail {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .cat-prod-cta {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 8px;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: background 0.15s;
+    }
+    .cat-prod-cta:hover {
+      background: var(--bg-secondary);
+    }
+
+    .catalogo-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .catalogo-group {
+      margin-bottom: 48px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    @media (max-width: 900px) {
+      .cat-products-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .cat-products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .cat-products-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <a href="index.html" class="logo" style="text-decoration:none;">
+      <div class="logo-icon" style="background:transparent;">
+        <img src="favicon.svg" alt="favicon">
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">Viveiro <span>Cítrico Yuri Bini</span></div>
+        <div class="logo-sub">Pouso Redondo, SC</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="viveiro.html">Sobre o Viveiro</a>
+      <a href="index.html#contato">Contato</a>
+    </div>
+    <button class="wpp-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      WhatsApp
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Início</a>
+    <a href="catalogo.html" class="active">Catálogo</a>
+    <a href="viveiro.html">Sobre o Viveiro</a>
+    <a href="index.html#contato">Contato</a>
+    <a href="#" class="mobile-wpp wpp-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- HERO DA PÁGINA -->
+  <div class="catalogo-hero">
+    <h1>Catálogo de Mudas</h1>
+    <p>Todas as variedades disponíveis no viveiro — consulte disponibilidade pelo WhatsApp</p>
+  </div>
+
+  <!-- CORPO DO CATÁLOGO -->
+  <div class="catalogo-body">
+
+    <!-- FILTROS -->
+    <div class="filtros">
+      <button class="filtro-btn ativo" data-cat="todos">Todas as mudas</button>
+      <button class="filtro-btn" data-cat="citrico">🍊 Cítricas</button>
+      <button class="filtro-btn" data-cat="ornamental">🌸 Ornamentais</button>
+      <button class="filtro-btn" data-cat="frutifera">🍑 Frutíferas</button>
+    </div>
+
+    <!-- GRUPO: CÍTRICAS -->
+    <div class="catalogo-group" data-group="citrico">
+      <div class="catalogo-section-label">🍊 Mudas Cítricas</div>
+      <div class="cat-products-grid">
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/laranjapera.webp" alt="laranja pera">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Laranja Pera</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Alta produtividade</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/limaotahiti.jpg" alt="limaotahiti">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Limão Taiti</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Sem sementes</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/tangerinaponkan.jpg" alt="tangerinaponkan">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Tangerina Ponkan</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Sabor suave</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/limaosiciliano.webp" alt="limaosiciliano">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Limão Siciliano</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Aroma intenso</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/laranjavalencia.webp" alt="laranjavalencia">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Laranja Valência</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Ideal para suco</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/pomelo.webp" alt="pomelo">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Pomelo / Toranja</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Fruta exótica</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/tangerinamurcot.webp" alt="tangerinamurcot">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Mexerica Murcote</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Muito doce</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="citrico">
+          <div class="cat-prod-img">
+            <img src="img/limaocravo.webp" alt="limaocravo">
+            <span class="cat-prod-badge badge-citrico">Cítrica</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Limão Cravo</div>
+            <div class="cat-prod-detail">Porta-enxerto · Sacola 2L · Resistente</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GRUPO: ORNAMENTAIS -->
+    <div class="catalogo-group" data-group="ornamental">
+      <div class="catalogo-section-label">🌸 Ornamentais</div>
+      <div class="cat-products-grid">
+
+        <div class="cat-prod-card" data-cat="ornamental">
+          <div class="cat-prod-img">
+            <img src="img/hibisco.webp" alt="hibisco">
+            <span class="cat-prod-badge badge-ornamental">Ornamental</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Hibisco</div>
+            <div class="cat-prod-detail">Muda enxertada · Vaso 2L · Floração abundante</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="ornamental">
+          <div class="cat-prod-img">
+            <img src="img/bougainvillea.webp" alt="bougainvillea">
+            <span class="cat-prod-badge badge-ornamental">Ornamental</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Bougainvillea</div>
+            <div class="cat-prod-detail">Muda enraizada · Vaso 2L · Diversas cores</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="ornamental">
+          <div class="cat-prod-img">
+            <img src="img/ficusbenjamina.webp" alt="ficusbenjamina">
+            <span class="cat-prod-badge badge-ornamental">Ornamental</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Ficus benjamina</div>
+            <div class="cat-prod-detail">Muda · Vaso 3L · Ideal para jardim</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="ornamental">
+          <div class="cat-prod-img">
+            <img src="img/azaleia.jpg" alt="azaleia">
+            <span class="cat-prod-badge badge-ornamental">Ornamental</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Azaléia</div>
+            <div class="cat-prod-detail">Muda · Vaso 2L · Floração primavera</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="ornamental">
+          <div class="cat-prod-img">
+            <img src="img/palmeiraareca.webp" alt="palmeiraareca">
+            <span class="cat-prod-badge badge-ornamental">Ornamental</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Palmeira Areca</div>
+            <div class="cat-prod-detail">Muda · Vaso 5L · Interior/Exterior</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="ornamental">
+          <div class="cat-prod-img">
+            <img src="img/croton.jpeg" alt="croton">
+            <span class="cat-prod-badge badge-ornamental">Ornamental</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Croton</div>
+            <div class="cat-prod-detail">Muda · Vaso 2L · Folhagem colorida</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GRUPO: FRUTÍFERAS -->
+    <div class="catalogo-group" data-group="frutifera">
+      <div class="catalogo-section-label">🍑 Frutíferas</div>
+      <div class="cat-products-grid">
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/mangapalmer.jpeg" alt="mangapalmer">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Manga Palmer</div>
+            <div class="cat-prod-detail">Enxertada · Vaso 5L · Precoce</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/abacatequintal.webp" alt="abacatequintal">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Abacate Quintal</div>
+            <div class="cat-prod-detail">Enxertada · Vaso 5L · Alta produção</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/jabuticabasabara.webp" alt="jabuticabasabara">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Jabuticaba Sabará</div>
+            <div class="cat-prod-detail">Enxertada · Vaso 3L · Cauliflora</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/goiabapaluma.webp" alt="goiabapaluma">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Goiaba Paluma</div>
+            <div class="cat-prod-detail">Enxertada · Sacola 3L · Rósea</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/maracujaazedo.webp" alt="maracujaazedo">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Maracujá Azedo</div>
+            <div class="cat-prod-detail">Muda · Sacola 2L · Produção rápida</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/amoranegra.webp" alt="amoranegra">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Amora Negra</div>
+            <div class="cat-prod-detail">Muda · Vaso 2L · Fácil cultivo</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/pessegoaurora.webp" alt="pessegoaurora">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Pêssego Aurora</div>
+            <div class="cat-prod-detail">Enxertada · Vaso 3L · Região serrana</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+        <div class="cat-prod-card" data-cat="frutifera">
+          <div class="cat-prod-img">
+            <img src="img/uvaia.webp" alt="uvaia">
+            <span class="cat-prod-badge badge-frutifera">Frutífera</span>
+          </div>
+          <div class="cat-prod-body">
+            <div class="cat-prod-name">Uvaia</div>
+            <div class="cat-prod-detail">Muda nativa · Vaso 2L · Fruta nativa</div>
+            <button class="cat-prod-cta">Consultar preço →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background: var(--green-light); border-radius: var(--radius-lg); padding: 32px; text-align:center; margin-top: 8px;">
+      <div style="font-size:16px; font-weight:500; color: var(--green-dark); margin-bottom:8px;">Não encontrou o que procura?</div>
+      <p style="font-size:13px; color: var(--text-secondary); margin-bottom:20px;">Entre em contato pelo WhatsApp e pergunte sobre disponibilidade e novas variedades.</p>
+      <button class="wpp-big" style="font-size:14px; padding: 12px 28px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.847L.057 23.853a.5.5 0 0 0 .609.608l6.007-1.464A11.939 11.939 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.952 9.952 0 0 1-5.093-1.396l-.363-.215-3.769.918.936-3.669-.236-.378A9.952 9.952 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        Consultar pelo WhatsApp
+      </button>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-copy">&copy; 2026 Viveiro Cítrico &mdash; Yuri Bini | 
+      <a href="politicadeprivacidade.html">Política de Privacidade</a>
+    </div>
+    <div class="footer-loc">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+      Desenvolvido Por  <a href="https://www.magnattodigital.com.br" target="_blank">Magnatto Digital</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Filtro de categorias
+    const filtros = document.querySelectorAll('.filtro-btn');
+    const grupos = document.querySelectorAll('.catalogo-group');
+
+    function aplicarFiltro(cat) {
+      filtros.forEach(b => b.classList.toggle('ativo', b.dataset.cat === cat));
+
+      if (cat === 'todos') {
+        grupos.forEach(g => g.style.display = '');
+      } else {
+        grupos.forEach(g => {
+          g.style.display = g.dataset.group === cat ? '' : 'none';
+        });
+      }
+    }
+
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => aplicarFiltro(btn.dataset.cat));
+    });
+
+    // Aplica filtro via URL param (?cat=citrico)
+    const params = new URLSearchParams(window.location.search);
+    const catParam = params.get('cat');
+    if (catParam) aplicarFiltro(catParam);
+
+    // WhatsApp nos cards
+    document.querySelectorAll('.cat-prod-cta').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const nome = e.target.closest('.cat-prod-card').querySelector('.cat-prod-name').textContent;
+        const WHATSAPP_NUMBER = '5547988612395';
+        const msg = encodeURIComponent(`Olá! Gostaria de saber o preço e disponibilidade da muda de *${nome}*.`);
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
